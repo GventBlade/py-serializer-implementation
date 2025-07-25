@@ -17,4 +17,5 @@ def deserialize_car_object(json: bytes) -> Car:
     data_dict = json.loads(json_string)
     serializer = CarSerializer(data=data_dict)
     serializer.is_valid(raise_exception=True)
-    return serializer.save()
+    car_instance = serializer.save()
+    return car_instance
