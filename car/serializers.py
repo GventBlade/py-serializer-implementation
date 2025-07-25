@@ -9,7 +9,8 @@ class CarSerializer(serializers.Serializer):
     model = serializers.CharField(required=True, max_length=64)
     horse_powers = serializers.IntegerField(min_value=1, max_value=1914)
     is_broken = serializers.BooleanField(required=True)
-    problem_description = serializers.CharField(required=False, allow_null=True)
+    problem_description = serializers.CharField(
+        required=False, allow_null=True)
 
     def create(self, validated_data):
 
@@ -23,7 +24,8 @@ class CarSerializer(serializers.Serializer):
         instance.horse_powers = validated_data.get(
             "horse_powers", instance.horse_powers
         )
-        instance.is_broken = validated_data.get("is_broken", instance.is_broken)
+        instance.is_broken = validated_data.get("is_broken",
+                                                instance.is_broken)
         instance.problem_description = validated_data.get(
             "problem_description", instance.problem_description
         )
